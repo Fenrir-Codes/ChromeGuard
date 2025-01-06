@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ChromeGuard - Setup</title>
+    <link rel="stylesheet" href="styles/setupstyle.css">
+</head>
+<body>
+
+<div class="container">
+
+    <h3>ChromeGuard</h3>
+
+    <table>
+        <tbody>
+            <tr>
+                <td><input type="password" placeholder="Enter Password" required id="pass"></td>
+            </tr>
+            <tr>
+                <td><input type="password" placeholder="Confirm Password" required id="confpass"></td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- Hibaüzenet -->
+    <div class="errorbox">
+        <div id="error-message" style="display: none;"></div>
+    </div>
+
+    <div id="status"></div>
+    <button type="submit" id="save">Save</button>
+    <br><br>
+</div>
+
+<script src="setup.js"></script>
+
+</body>
+</html>

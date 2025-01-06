@@ -1,0 +1,13 @@
+{
+  "manifest_version": 3,
+  "name": "ChromeGuard - Password protected browser",
+  "version": "1.0",
+  "permissions": ["storage", "tabs", "windows"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "setup.html"
+  },
+  "description": "A Chrome extension that protects your browser with a password. By Jozsef Bali"
+}
