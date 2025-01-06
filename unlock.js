@@ -108,9 +108,7 @@ function login() {
                 if (response && response.success) {
                     errorMessage.textContent = lang.success;
                     errorMessage.style.display = 'block';
-
-                    // Állítsuk be a sessionStorage-t, hogy jelezze a sikeres bejelentkezést
-                    sessionStorage.setItem('isLoggedIn', 'true');
+                    
                     window.close(); // Login tab bezárása
 
                 } else {
