@@ -13,7 +13,7 @@
 /* CONTAINER */
 .container {
     width: 400px;
-    background: rgba(104, 104, 104, 0.7);
+    background: rgba(88, 88, 88, 0.7);
     border: 1px solid #555;
     color:white;
     text-align: center;
@@ -104,7 +104,7 @@ button:hover {
     }
 
     .container {
-        background: rgba(104, 104, 104, 0.7);
+        background: rgba(88, 88, 88, 0.7);
         border: 1px solid #555;
         color:rgb(255, 255, 255);
         backdrop-filter: blur(5px);
