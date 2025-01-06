@@ -72,7 +72,6 @@ function reopenClosedTabs() {
                 chrome.tabs.remove(tab.id);
             });
         });
-        chrome.tabs.create({ url: "about:blank" });
         closeAllTabs();
     } else {
         closedTabs.forEach(tab => {

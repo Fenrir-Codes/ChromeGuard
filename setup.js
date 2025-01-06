@@ -8,6 +8,10 @@ document.getElementById('confpass').addEventListener('keydown', function(event) 
     }
 });
 
+window.onload = function() {
+    document.getElementById('pass').focus(); // focus on pass input field
+}
+
 // Nyelvi beállítások
 const messages = {
   hu: {
@@ -100,7 +104,25 @@ function savePassword() {
       
       // Átirányítjuk a login oldalra
       setTimeout(() => {
-          window.location.href = chrome.runtime.getURL("unlock.html");
+        closeAllTabs();
       }, 1000); // Várjunk egy kicsit, hogy a sikerüzenet megjelenhessen
   });
+}
+
+
+function closeAllTabs() {
+    chrome.tabs.query({}, (tabs) => {
+        closedTabs = tabs
+        .filter(tab => tab.url !== chrome.runtime.getURL("unlock.html"))
+        .filter(tab => tab.url !== chrome.runtime.getURL("setup.html"))
+        .map(tab => ({
+            url: tab.url,
+            windowId: tab.windowId,
+            index: tab.index,
+        }));
+
+        tabs.forEach(tab => {
+            chrome.tabs.remove(tab.id);
+        });
+    });
 }

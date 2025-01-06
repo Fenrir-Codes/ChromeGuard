@@ -8,6 +8,10 @@ document.getElementById('pass').addEventListener('keydown', function(event) {
     }
 });
 
+window.onload = function() {
+    document.getElementById('pass').focus(); // focus on pass input field
+}
+
 // Nyelvi beállítások
 const messages = {
     hu: {
