@@ -12,7 +12,7 @@ body {
 /* CONTAINER */
 .container {
     width: 400px;
-    background-color: #333;
+    background: rgba(104, 104, 104, 0.7);
     border: 1px solid #555;
     color:white;
     text-align: center;
@@ -20,10 +20,14 @@ body {
     border-radius: 5px;
     border: 1px solid #555;
     position: relative; /* Set the container's position to relative for absolute positioning */
+    backdrop-filter: blur(5px);
+    -webkit-backdrop-filter: blur(5px);
+    border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
 /* COPYRIGHT */
 .cp {
+    color: rgb(216, 166, 0);
     font-size: 10px;
     position: absolute;
     top: 10px;
@@ -110,9 +114,12 @@ input[type=text], input[type=password] {
     }
 
     .container {
-        background-color: #333;
+        background: rgba(104, 104, 104, 0.7);
         border: 1px solid #555;
         color:rgb(255, 255, 255);
+        backdrop-filter: blur(5px);
+        -webkit-backdrop-filter: blur(5px);
+        border: 1px solid rgba(255, 255, 255, 0.3);
     }
 
     input[type="password"], input[type="text"] {
