@@ -82,7 +82,7 @@ button:hover {
 }
 #error-message {
     margin-top: 10px;
-    color: red;
+    color: rgb(216, 166, 0);
     font-weight: bold;
     font-size: 14px;
 }
@@ -151,6 +151,6 @@ input[type=text], input[type=password] {
 
     #error-message {
         font-size: 14px;
-        color: #df0000;
+        color: rgb(216, 166, 0);
     }
 }

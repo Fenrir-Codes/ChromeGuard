@@ -18,31 +18,42 @@ const messages = {
         emptyPassword: "Kérlek, add meg a jelszót!",
         incorrectPassword: "Hibás jelszó. Próbáld újra!",
         success: "Sikeres bejelentkezés!",
-        noPasswordSet: "Nincs beállítva jelszó. Kérlek, állítsd be először a jelszót!"
+        noPasswordSet: "Nincs beállítva jelszó. Kérlek, állítsd be először a jelszót!",
+        errorWhileLogin: "Hiba történt a bejelentkezés során!"
     },
     en: {
         emptyPassword: "Please enter your password!",
         incorrectPassword: "Incorrect password. Try again!",
         success: "Login successful!",
-        noPasswordSet: "No password is set. Please set a password first!"
+        noPasswordSet: "No password is set. Please set a password first!",
+        errorWhileLogin: "An error occurred!"
+    },
+    de: {
+        emptyPassword: "Bitte geben Sie das Passwort ein!",
+        incorrectPassword: "Falsches Passwort. Versuchen Sie es erneut!",
+        success: "Erfolgreiche Anmeldung!",
+        errorWhileLogin: "Beim Anmelden ist ein Fehler aufgetreten!"
     },
     da: {
         emptyPassword: "Indtast venligst din adgangskode!",
         incorrectPassword: "Forkert adgangskode. Prøv igen!",
         success: "Login succesfuld!",
-        noPasswordSet: "Ingen adgangskode er indstillet. Indstil venligst først en adgangskode!"
+        noPasswordSet: "Ingen adgangskode er indstillet. Indstil venligst først en adgangskode!",
+        errorWhileLogin: "Der er opstået en fejl!"
     },
     es: {
         emptyPassword: "¡Por favor, ingresa tu contraseña!",
         incorrectPassword: "Contraseña incorrecta. ¡Intenta de nuevo!",
         success: "¡Inicio de sesión exitoso!",
-        noPasswordSet: "¡No se ha configurado una contraseña! ¡Por favor, configura una primero!"
+        noPasswordSet: "¡No se ha configurado una contraseña! ¡Por favor, configura una primero!",
+        errorWhileLogin: "¡Se ha producido un error!"
     },
     fr: {
         emptyPassword: "Veuillez entrer votre mot de passe!",
         incorrectPassword: "Mot de passe incorrect. Essayez à nouveau!",
         success: "Connexion réussie!",
-        noPasswordSet: "Aucun mot de passe n'est défini. Veuillez d'abord définir un mot de passe!"
+        noPasswordSet: "Aucun mot de passe n'est défini. Veuillez d'abord définir un mot de passe!",
+        errorWhileLogin: "Une erreur s'est produite!"
     }
 };
 
@@ -113,7 +124,7 @@ function login() {
 
                 } else {
                     // Ha nem sikerült, akkor hibaüzenet
-                    errorMessage.textContent = "Hiba történt a bejelentkezés során.";
+                    errorMessage.textContent = lang.errorWhileLogin;
                     errorMessage.style.display = 'block';
                 }
             });
