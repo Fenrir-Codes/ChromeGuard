@@ -25,6 +25,18 @@ body {
     border: 1px solid rgba(255, 255, 255, 0.3);
 }
 
+/* LOGO CONTAINER */
+.logo-container {
+    position: absolute;
+    top: 10px;
+    left: 10px; /* Balra igazítva */
+}
+
+.logo {
+    width: 30px; /* Állíthatod a logó méretét */
+    height: auto;
+}
+
 /* COPYRIGHT */
 .cp {
     color: rgb(216, 166, 0);

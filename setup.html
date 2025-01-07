@@ -2,39 +2,48 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="icon" href="Icon/favicon-32x32.png" type="image/x-icon">
     <title>ChromeGuard - Setup</title>
     <link rel="stylesheet" href="styles/setupstyle.css">
 </head>
 <body>
 
-<div class="container">
+    <div class="container">
 
-    <div class="cp"><p>&copy; 2025 Jozsef Bali</p>
+        <!-- Logó balra -->
+        <div class="logo-container">
+            <img class="logo" src="Icon/lock.png" alt="ChromeGuard Logo">
+        </div>
+    
+        <!-- Copyright szöveg -->
+        <div class="cp">
+            <p>&copy; 2025 Jozsef Bali</p>
+        </div>
+    
+        <br>
+    
+        <h3 class="title">ChromeGuard</h3>
+        <p class="info">After setup the browser will close automatically</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td><input type="password" placeholder="Enter Password" required id="pass"></td>
+                </tr>
+                <tr>
+                    <td><input type="password" placeholder="Confirm Password" required id="confpass"></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <!-- Hibaüzenet -->
+        <div class="errorbox">
+            <div id="error-message" style="display: none;"></div>
+        </div>
+    
+        <div id="status"></div>
+        <button type="submit" id="save">Save</button>
+        <br><br>
     </div>
-    <br>
-
-    <h3 class="title">ChromeGuard</h3>
-    <p class="info">After setup the browser will close automatically</p>
-    <table>
-        <tbody>
-            <tr>
-                <td><input type="password" placeholder="Enter Password" required id="pass"></td>
-            </tr>
-            <tr>
-                <td><input type="password" placeholder="Confirm Password" required id="confpass"></td>
-            </tr>
-        </tbody>
-    </table>
-
-    <!-- Hibaüzenet -->
-    <div class="errorbox">
-        <div id="error-message" style="display: none;"></div>
-    </div>
-
-    <div id="status"></div>
-    <button type="submit" id="save">Save</button>
-    <br><br>
-</div>
 
 <script src="setup.js"></script>
 
