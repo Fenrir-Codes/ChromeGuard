@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,42 +7,57 @@
     <title>ChromeGuard - Unlock</title>
     <link rel="stylesheet" href="styles/unlockstyle.css">
 </head>
+
 <body>
 
+    <!-- CONTAINER -->
     <div class="container">
 
-        <!-- Logó balra -->
+        <!-- LOGO CONTAINER -->
         <div class="logo-container">
-            <img class="logo" src="Icon/lock.png" alt="ChromeGuard Logo">
+            <img class="icon-unlock" src="Icon/unlock-solid.png" alt="Unlock">
         </div>
 
+        <!-- COPYRIGHT -->
         <div class="cp">
             <p>&copy; 2025 Jozsef Bali</p>
         </div>
-        
-    <br>
 
-    <h3 class="title">ChromeGuard</h3>
+        <br>
 
-    <table>
-        <tbody>
-            <tr>
-                <td><input type="password" placeholder="Enter Password" required id="pass"></td>
-            </tr>
-        </tbody>
-    </table>
+        <!-- TITLE -->
+        <h3 class="title">ChromeGuard</h3>
 
-    <!-- Hibaüzenet -->
-    <div class="errorbox">
-        <div id="error-message" style="display: none;"></div>
+        <!-- WRAPPER -->
+        <div class="wrapper">
+
+            <!-- INPUT CONTAINER -->
+            <div class="input-container">
+                <img class="icon" src="Icon/lock-solid.png">
+                <input type="password" placeholder="Enter Password" required id="pass">
+            </div>
+
+            <!-- ERROR MESSAGE -->
+            <div class="errorbox">
+                <div id="error-message" style="display: none;"></div>
+            </div>
+
+        </div>
+
+        <!-- BUTTON CONTAINER -->
+        <div class="buttoncontainer"></div>
+        <button type="submit" id="login">Unlock</button>
+        <br><br>
     </div>
 
-    <div id="status"></div>
-    <button type="submit" id="login">Unlock</button>
-    <br><br>
-</div>
+    <!-- CIRCLES-->
+    <div class="circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
 
-<script src="unlock.js"></script>
+    <script src="unlock.js"></script>
 
 </body>
+
 </html>

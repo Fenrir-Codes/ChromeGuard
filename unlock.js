@@ -130,7 +130,7 @@ function login() {
                 if (response && response.success) {
                     errorMessage.textContent = lang.success;
                     errorMessage.style.display = 'block';
-                    
+
                     window.close(); // Close login tab
 
                 } else {

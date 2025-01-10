@@ -1,159 +1,219 @@
  /* Alapértelmezett stílusok */
- body {
-    font-family: Arial, Helvetica, sans-serif;
-    margin: 0;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    background-color: #f4f4f4;
+body {
+     font-family: Arial, Helvetica, sans-serif;
+     margin: 0;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     height: 100vh;
+     background: radial-gradient(ellipse at bottom, #1b2735 0%, #090a0f 100%);
+     color: white;
 }
 
 
-/* CONTAINER */
+ /* CONTAINER */
 .container {
-    width: 400px;
-    background: rgba(88, 88, 88, 0.7);
-    border: 1px solid #555;
-    color:white;
-    text-align: center;
-    padding: 20px;
-    border-radius: 5px;
-    border: 1px solid #555;
-    position: relative; /* Set the container's position to relative for absolute positioning */
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.3);
+     width: 400px;
+     color: white;
+     text-align: center;
+     padding: 20px;
+     position: relative;
+     border-radius: 20px;
+     background: rgba(255, 255, 255, 0.1);
+     backdrop-filter: blur(35px);
+     -webkit-backdrop-filter: blur(35px);
+     border: 2px solid rgba(255, 255, 255, 0.1);
 }
 
-/* LOGO CONTAINER */
+ /* LOGO CONTAINER */
 .logo-container {
-    position: absolute;
-    top: 10px;
-    left: 10px; /* Balra igazítva */
+     position: absolute;
+     top: 15px;
+     left: 10px;
 }
 
 .logo {
-    width: 30px; /* Állíthatod a logó méretét */
-    height: auto;
+     width: 30px;
+     height: auto;
 }
 
-/* COPYRIGHT */
+ /* COPYRIGHT */
 .cp {
-    color: rgb(216, 166, 0);
-    font-size: 10px;
-    position: absolute;
-    top: 10px;
-    right: 20px; /* Jobbra igazítva */
-    text-align: right;
+     color: rgb(216, 166, 0);
+     font-size: 10px;
+     position: absolute;
+     top: 10px;
+     right: 20px;
+     /* Jobbra igazítva */
+     text-align: right;
 }
 
-/* TABLE */
-table {
-    margin: 10px 0;
-    width: 100%;
-}
-td {
-    padding: 10px;
-}
-
-/* INPUT */
-input[type="password"], input[type="text"] {
-    padding: 8px;
-    width: 250px;
-    margin-top: 5px;
-    border: 1px solid #ccc;
-    border-radius: 2px;
+ /* Wrapper */
+.wrapper {
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
 }
 
-/* BUTTON */
-button {
-    padding: 10px 20px;
-    background-color: #4CAF50;
-    color: white;
-    border: none;
-    border-radius: 2px;
-    cursor: pointer;
-    font-size: 16px;
-}
-button:hover {
-    background-color: #45a049;
+ /* input-container */
+.input-container {
+     display: flex;
+     align-items: center;
+     margin: 10px 0;
+     background: rgba(255, 255, 255, 0.1);
+     border-radius: 5px;
+     padding: 0px;
+     width: 300px;
 }
 
-/* STATUS */
-#status {
+ /* ICON */
+ .icon {
+     color: white;
+     padding: 5px;
+     max-width: 25px;
+     text-align: center;
+ }
+.icon-gear{
+    width: 25px;
+}
+
+ /* INPUT */
+input[type="password"],
+input[type="text"] {
+     margin-top: 0;
+     border: 1px solid #ccc;
+     border-radius: 2px;
+     background-color: #ffffff;
+     color: rgb(0, 0, 0);
+     padding: 10px;
+     width: 100%;
+     box-sizing: border-box;
+}
+
+ /* BUTTON */
+  /* Button container */
+.buttoncontainer {
     margin-top: 10px;
     color: green;
     font-weight: bold;
 }
-
-/* ERROR BOX */
-.errorbox{
-    height: 30px;
-    width: 100%;
+button {
+     background-color: #4bb350;
+     color: white;
+     padding: 14px 20px;
+     margin: 8px 0;
+     border: none;
+     cursor: pointer;
+     width: 80%;
+     font-size: large;
 }
+
+button:hover {
+     background-color: #45a049;
+}
+
+ /* ERROR BOX */
+.errorbox {
+     height: 30px;
+     width: 100%;
+}
+
 #error-message {
-    margin-top: 10px;
-    color: rgb(216, 166, 0);
-    font-weight: bold;
-    font-size: 14px;
-}
-.title{
-    font-size: 30px;
+     margin-top: 10px;
+     color: rgb(216, 166, 0);
+     font-weight: bold;
+     font-size: 14px;
 
 }
-.info{
-    font-size: 12px;
-    color: rgb(255, 196, 0);
+
+.title {
+     font-size: 30px;
+
+}
+
+.info {
+     font-size: 12px;
+     color: rgb(255, 196, 0);
 }
 
 
-/* Dark theme */
-@media (prefers-color-scheme: dark) {
-    body {
-        background-color: #121212;
-        color: white;
+ /* Background circles */
+.circle {
+     position: absolute;
+     border-radius: 50%;
+     background: linear-gradient(120deg, #1a8862, #2c3e50);
+}
+
+.circles {
+     position: absolute;
+     height: 270px;
+     width: 450px;
+     top: 50%;
+     left: 50%;
+     transform: translate(-50%, -50%);
+     z-index: -1;
+}
+
+.circle-1 {
+     height: 280px;
+     width: 280px;
+     top: 100px;
+     left: -150px;
+     opacity: 0.8;
+     animation-timing-function: cubic-bezier(0.54, 0.085, 0.5, 0.92);
+     animation-iteration-count: infinite;
+     animation-name: float;
+     -webkit-animation-name: float;
+     animation-duration: 6s;
+     -webkit-animation-duration: 6s;
+     -webkit-animation-delay: 3.5s;
+     animation-delay: 3.5s;
+     animation-direction: alternate;
+
+}
+
+.circle-2 {
+     height: 200px;
+     width: 200px;
+     bottom: 100px;
+     right: -100px;
+     opacity: 0.8;
+     animation-timing-function: cubic-bezier(0.54, 0.085, 0.5, 0.92);
+     animation-iteration-count: infinite;
+     animation-name: float;
+     -webkit-animation-name: float;
+     animation-duration: 6s;
+     -webkit-animation-duration: 6s;
+     -webkit-animation-delay: 2s;
+     animation-delay: 2s;
+     animation-direction: alternate;
+}
+
+@keyframes float {
+
+    0% {
+         -webkit-transform: rotateX(0deg) translateY(0px);
+         -moz-transform: rotateX(0deg) translateY(0px);
+         -ms-transform: rotateX(0deg) translateY(0px);
+         -o-transform: rotateX(0deg) translateY(0px);
+         transform: rotateX(0deg) translateY(0px);
     }
 
-    .container {
-        background: rgba(88, 88, 88, 0.7);
-        border: 1px solid #555;
-        color:rgb(255, 255, 255);
-        backdrop-filter: blur(5px);
-        -webkit-backdrop-filter: blur(5px);
-        border: 1px solid rgba(255, 255, 255, 0.3);
+    50% {
+         -webkit-transform: rotateX(0deg) translateY(1px) translateX(5px);
+         -moz-transform: rotateX(0deg) translateY(10px) translateX(5px);
+         -ms-transform: rotateX(0deg) translateY(30px) translateX(5px);
+         -o-transform: rotateX(0deg) translateY(40px) translateX(5px);
+         transform: rotateX(0deg) translateY(10px) translateX(5px);
     }
 
-
-    input[type="password"], input[type="text"] {
-        background-color: #ffffff;
-        border: 1px solid #555;
-        color: rgb(0, 0, 0);
-        padding: 10px 20px;
-        width: 250px;
+    100% {
+         -webkit-transform: rotateX(0deg) translateY(0px) translateX(1px);
+         -moz-transform: rotateX(0deg) translateY(0px) translateX(1px);
+         -ms-transform: rotateX(0deg) translateY(0px) translateX(1px);
+         -o-transform: rotateX(0deg) translateY(0px) translateX(1px);
+         transform: rotateX(0deg) translateY(0px) translateX(1px);
     }
 
-    button {
-        background-color: #4bb350;
-        color:white;
-        padding: 14px 20px;
-        margin: 8px 0;
-        border: none;
-        cursor: pointer;
-        width: 80%;
-        font-size: large;
-    }
-
-    button:hover {
-        background-color: #3d8f41;
-    }
-
-    #status {
-        color: lightgreen;
-    }
-
-    #error-message {
-        font-size: 14px;
-        color: rgb(216, 166, 0);
-    }
 }

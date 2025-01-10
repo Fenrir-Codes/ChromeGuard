@@ -1,4 +1,5 @@
 <!DOCTYPE html>
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -6,46 +7,62 @@
     <title>ChromeGuard - Setup</title>
     <link rel="stylesheet" href="styles/setupstyle.css">
 </head>
+
 <body>
 
+    <!-- CONTAINER-->
     <div class="container">
 
-        <!-- Logó balra -->
+        <!-- LOGO CONTAINER -->
         <div class="logo-container">
-            <img class="logo" src="Icon/lock.png" alt="ChromeGuard Logo">
+            <img class="icon-gear" src="Icon/gear-solid.png" alt="Setup">
         </div>
-    
-        <!-- Copyright szöveg -->
+
+        <!-- COPYRIGHT -->
         <div class="cp">
             <p>&copy; 2025 Jozsef Bali</p>
         </div>
-    
+
         <br>
-    
+
+        <!-- TITLE -->
         <h3 class="title">ChromeGuard</h3>
         <p class="info">After setup the browser will close automatically</p>
-        <table>
-            <tbody>
-                <tr>
-                    <td><input type="password" placeholder="Enter Password" required id="pass"></td>
-                </tr>
-                <tr>
-                    <td><input type="password" placeholder="Confirm Password" required id="confpass"></td>
-                </tr>
-            </tbody>
-        </table>
-    
-        <!-- Hibaüzenet -->
-        <div class="errorbox">
-            <div id="error-message" style="display: none;"></div>
+
+        <!-- WRAPPER -->
+        <div class="wrapper">
+
+            <!-- INPUT CONTAINER -->
+            <div class="input-container">
+                <img class="icon" src="Icon/lock-solid.png">
+                <input type="password" placeholder="Enter Password" required id="pass">
+            </div>
+            <div class="input-container">
+                <img class="icon" src="Icon/lock-solid.png">
+                <input type="password" placeholder="Confirm Password" required id="confpass">
+            </div>
+
+
+            <!-- ERROR MESSAGE-->
+            <div class="errorbox">
+                <div id="error-message" style="display: none;"></div>
+            </div>
         </div>
-    
-        <div id="status"></div>
+
+        <!-- BUTTON CONTAINER -->
+        <div class="buttoncontainer"></div>
         <button type="submit" id="save">Save</button>
         <br><br>
     </div>
 
-<script src="setup.js"></script>
+    <!-- CIRCLES -->
+    <div class="circles">
+        <div class="circle circle-1"></div>
+        <div class="circle circle-2"></div>
+    </div>
+
+    <script src="setup.js"></script>
 
 </body>
+
 </html>
