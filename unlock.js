@@ -89,10 +89,13 @@ function disableDevToolsAndRightClick(event) {
 // Események hozzárendelése
 document.addEventListener('contextmenu', disableDevToolsAndRightClick); // Disable right click
 document.addEventListener('keydown', disableDevToolsAndRightClick); // Disable keys
-document.getElementById('login').addEventListener('click', login);
-document.getElementById('pass').addEventListener('keydown', function(event) {
+document.getElementById('login').addEventListener('click', async () => {
+    await login(); // Várjuk meg, hogy a login befejeződjön
+});
+
+document.getElementById('pass').addEventListener('keydown', async function(event) {
     if (event.key === "Enter") {
-        login();
+        await login(); // Várjuk meg, hogy a login befejeződjön
     }
 });
 
@@ -108,7 +111,7 @@ window.onload = function() {
 
 
 /* Login function */
-function login() {
+async function login() {
     const enteredPassword = document.getElementById('pass').value;
     const errorMessage = document.getElementById('error-message');
 
@@ -122,28 +125,28 @@ function login() {
         return;
     }
 
-    // JVerify password based on stored value
-    chrome.storage.local.get(['key'], (result) => {
-        const actualPassword = result.key;
+    // Verify password based on stored value
+    chrome.storage.local.get(['key'], async (result) => {
+        const storedHashedPassword = result.key;
 
-        if (actualPassword === undefined) {
+        if (storedHashedPassword === undefined) {
             errorMessage.textContent = lang.noPasswordSet;
             errorMessage.style.display = 'block';
             return;
         }
 
-        if (enteredPassword === actualPassword) {
+        // Hasheljük az input jelszót
+        const hashedEnteredPassword = await hashPassword(enteredPassword);
+
+        // Összehasonlítjuk a hashelt input jelszót a tárolt hashelt jelszóval
+        if (hashedEnteredPassword === storedHashedPassword) {
             // If the password is correct, we notify background.js
             chrome.runtime.sendMessage({ action: "removeListener" }, (response) => {
-                // Check that there is an answer and that it contains a success key
                 if (response && response.success) {
                     errorMessage.textContent = lang.success;
                     errorMessage.style.display = 'block';
-
                     window.close(); // Close login tab
-
                 } else {
-                    // If it fails, an error message appears
                     errorMessage.textContent = lang.errorWhileLogin;
                     errorMessage.style.display = 'block';
                 }
@@ -156,3 +159,12 @@ function login() {
     });
 }
 
+// Jelszó hashelése SHA-256-al
+async function hashPassword(password) {
+    const encoder = new TextEncoder();
+    const data = encoder.encode(password);
+    const hashBuffer = await crypto.subtle.digest('SHA-256', data); // SHA-256 hash
+    const hashArray = Array.from(new Uint8Array(hashBuffer)); // byte tömb
+    const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+    return hashHex; // hexadecimális string
+}

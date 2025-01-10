@@ -60,11 +60,14 @@ const messages = {
 // Események hozzárendelése
 document.addEventListener('contextmenu', disableDevToolsAndRightClick); // Jobb kattintás letiltása
 document.addEventListener('keydown', disableDevToolsAndRightClick); // Billentyűk letiltása
-document.getElementById('save').addEventListener('click', savePassword);
-document.getElementById('confpass').addEventListener('keydown', function(event) {
-    if (event.key === "Enter") {
-        savePassword();
-    }
+document.getElementById('save').addEventListener('click', async () => {
+  await savePassword(); // Várjuk meg, hogy a jelszó mentése befejeződjön
+});
+
+document.getElementById('confpass').addEventListener('keydown', async function(event) {
+  if (event.key === "Enter") {
+      await savePassword(); // Várjuk meg, hogy a jelszó mentése befejeződjön
+  }
 });
 
 window.onload = function() {
@@ -108,35 +111,38 @@ function disableDevToolsAndRightClick(event) {
 
 
 /* Save password function */
-function savePassword() {
+async function savePassword() {
   const passwordInput = document.getElementById('pass').value;
   const confirmPassword = document.getElementById('confpass').value;
   const errorMessage = document.getElementById('error-message'); // Error message meghívása
 
   // Ellenőrizzük, hogy minden mező ki van-e töltve
   if (!passwordInput || !confirmPassword) {
-      errorMessage.textContent = lang.emptyFields;
-      errorMessage.style.display = 'block';
-      return;
+    errorMessage.textContent = lang.emptyFields;
+    errorMessage.style.display = 'block';
+    return;
   }
 
   // Ellenőrizzük, hogy a két jelszó egyezik-e
   if (passwordInput !== confirmPassword) {
-      errorMessage.textContent = lang.passwordMismatch;
-      errorMessage.style.display = 'block';
-      return;
+    errorMessage.textContent = lang.passwordMismatch;
+    errorMessage.style.display = 'block';
+    return;
   }
 
-  // Ha minden rendben van, mentsük el a jelszót
-  chrome.storage.local.set({ key: confirmPassword }, () => {
-      // A hibaüzenetet eltüntetjük, és megjelenítjük a sikerüzenetet
-      errorMessage.textContent = lang.saved;
-      errorMessage.style.display = 'block';
-      
-      // Átirányítjuk a login oldalra
-      setTimeout(() => {
-        closeAllTabs();
-      }, 1000); // Várjunk egy kicsit, hogy a sikerüzenet megjelenhessen
+  // Hasheljük a jelszót, mielőtt tároljuk
+  const hashedPassword = await hashPassword(confirmPassword);
+
+  // Ha minden rendben van, mentsük el a hashelt jelszót
+  chrome.storage.local.set({ key: hashedPassword }, () => {
+    // A hibaüzenetet eltüntetjük, és megjelenítjük a sikerüzenetet
+    errorMessage.textContent = lang.saved;
+    errorMessage.style.display = 'block';
+
+    // Átirányítjuk a login oldalra
+    setTimeout(() => {
+      closeAllTabs();
+    }, 1000); // Várjunk egy kicsit, hogy a sikerüzenet megjelenhessen
   });
 }
 
@@ -156,4 +162,14 @@ function closeAllTabs() {
             chrome.tabs.remove(tab.id);
         });
     });
+}
+
+// Jelszó hashelése SHA-256-al
+async function hashPassword(password) {
+  const encoder = new TextEncoder();
+  const data = encoder.encode(password);
+  const hashBuffer = await crypto.subtle.digest('SHA-256', data); // SHA-256 hash
+  const hashArray = Array.from(new Uint8Array(hashBuffer)); // byte tömb
+  const hashHex = hashArray.map(byte => byte.toString(16).padStart(2, '0')).join('');
+  return hashHex; // hexadecimális string
 }
