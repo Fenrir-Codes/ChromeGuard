@@ -6,7 +6,8 @@ const messages = {
         success: "Sikeres bejelentkezés!",
         noPasswordSet: "Nincs beállítva jelszó. Kérlek, állítsd be először a jelszót!",
         errorWhileLogin: "Hiba történt a bejelentkezés során!",
-        unlockButton: "Feloldás"
+        unlockButton: "Feloldás",
+        placeholder: "Írd be a jelszót"
     },
     en: {
         emptyPassword: "Please enter your password!",
@@ -14,7 +15,8 @@ const messages = {
         success: "Login successful!",
         noPasswordSet: "No password is set. Please set a password first!",
         errorWhileLogin: "An error occurred!",
-        unlockButton: "Unlock"
+        unlockButton: "Unlock",
+        placeholder: "Enter password"
     },
     de: {
         emptyPassword: "Bitte geben Sie das Passwort ein!",
@@ -22,7 +24,8 @@ const messages = {
         success: "Erfolgreiche Anmeldung!",
         noPasswordSet: "Kein Passwort festgelegt. Bitte zuerst ein Passwort festlegen!",
         errorWhileLogin: "Beim Anmelden ist ein Fehler aufgetreten!",
-        unlockButton: "Entsperren"
+        unlockButton: "Entsperren",
+        placeholder: "Passwort eingeben"
     },
     da: {
         emptyPassword: "Indtast venligst din adgangskode!",
@@ -30,7 +33,8 @@ const messages = {
         success: "Login succesfuld!",
         noPasswordSet: "Ingen adgangskode er indstillet. Indstil venligst først en adgangskode!",
         errorWhileLogin: "Der er opstået en fejl!",
-        unlockButton: "Lås op"
+        unlockButton: "Lås op",
+        placeholder: "Indtast adgangskode"
     },
     es: {
         emptyPassword: "¡Por favor, ingresa tu contraseña!",
@@ -38,7 +42,8 @@ const messages = {
         success: "¡Inicio de sesión exitoso!",
         noPasswordSet: "¡No se ha configurado una contraseña! ¡Por favor, configura una primero!",
         errorWhileLogin: "¡Se ha producido un error!",
-        unlockButton: "Desbloquear"
+        unlockButton: "Desbloquear",
+        placeholder: "Introducir contraseña"
     },
     fr: {
         emptyPassword: "Veuillez entrer votre mot de passe!",
@@ -46,9 +51,11 @@ const messages = {
         success: "Connexion réussie!",
         noPasswordSet: "Aucun mot de passe n'est défini. Veuillez d'abord définir un mot de passe!",
         errorWhileLogin: "Une erreur s'est produite!",
-        unlockButton: "Déverrouiller"
+        unlockButton: "Déverrouiller",
+        placeholder: "Entrez le mot de passe"
     }
 };
+
 
 // Detecting language (Default English)
 const userLanguage = navigator.language.startsWith('hu') ? 'hu' :
@@ -91,10 +98,12 @@ document.getElementById('pass').addEventListener('keydown', function(event) {
 
 window.onload = function() {
     document.getElementById('pass').focus(); // focus on pass input field
+    document.getElementById('pass').placeholder = lang.placeholder;
 
     // Setting the button language according to browsers language
     const loginButton = document.getElementById('login');
     loginButton.textContent = lang.unlockButton || 'Unlock'; // Default to English if no language found
+
 };
 
 
