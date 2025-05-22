@@ -15,7 +15,7 @@ chrome.runtime.onInstalled.addListener(async function(details){
 chrome.runtime.onStartup.addListener(async function(){
     chrome.storage.local.get(['key'], (result) => {
         if(result.key) {
-            //closeAllTabs();
+            closeAllTabs();
             chrome.tabs.create({ url: chrome.runtime.getURL("unlock.html") }, (tab) => {
                 let currentWindowId = tab.id;
                 lastOptionsId = tab.id;
